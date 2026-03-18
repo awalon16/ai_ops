@@ -18,42 +18,44 @@
         <div>
           <p class="eyebrow">NovaOps AI Command Center</p>
           <h1>Single Pane of Glass</h1>
-          <p class="subtitle">
-            Executive-ready operations mission control for observability, incidents, predictive risk, and guarded
-            automation.
-          </p>
         </div>
-
         <div class="ribbon-controls">
           <label>
             Tenant
-            <select id="tenant-select"></select>
+            <select>
+              <option>Helios Financial Group</option>
+              <option>Northstar Telecom</option>
+              <option>Atlas Managed Cloud</option>
+            </select>
           </label>
           <label>
-            Demo scene
-            <select id="scene-select"></select>
+            Window
+            <select>
+              <option>Last 15 minutes</option>
+              <option>Last hour</option>
+              <option>Last 24 hours</option>
+            </select>
           </label>
           <label class="query-bar">
             Ask NovaOps
-            <input id="query-input" value="What is failing in Germany and what should I tell the customer?" />
+            <input value="What is failing in Germany and what should I tell the customer?" />
           </label>
         </div>
-
         <div class="ribbon-metrics">
           <article>
             <span>Global Health</span>
-            <strong id="global-health">94</strong>
-            <small id="health-trend">+2 vs 1h</small>
+            <strong>94</strong>
+            <small>+2 vs 1h</small>
           </article>
           <article>
             <span>Active Incidents</span>
-            <strong id="incident-count">03</strong>
-            <small id="incident-detail">1 critical</small>
+            <strong>03</strong>
+            <small>1 critical</small>
           </article>
           <article>
             <span>Automation Mode</span>
-            <strong id="automation-mode">Semi-Auto</strong>
-            <small id="guardrail-status">Guardrails active</small>
+            <strong>Semi-Auto</strong>
+            <small>Guardrails active</small>
           </article>
         </div>
       </header>
@@ -63,106 +65,113 @@
           <div class="hero-header">
             <div>
               <p class="eyebrow">Executive Briefing Mode</p>
-              <h2 id="hero-title">Global Operational Posture</h2>
+              <h2>Global Operational Posture</h2>
             </div>
-            <div class="hero-actions">
-              <button id="play-tour-button">Play demo story</button>
-              <button id="briefing-button">Generate Meeting Brief</button>
-            </div>
-          </div>
-
-          <div class="status-bar">
-            <span class="status-pill" id="scene-pill">Scene 1 · Calm before the storm</span>
-            <span class="status-pill alt" id="business-pill">No current customer-facing P1 impact</span>
+            <button>Generate Meeting Brief</button>
           </div>
 
           <div class="map-layout">
-            <section class="globe-card">
+            <div class="globe-card">
               <div class="map-glow"></div>
-              <div class="region-grid" id="region-grid"></div>
+              <div class="region region-na">
+                <span>North America</span>
+                <strong>Healthy · 96</strong>
+              </div>
+              <div class="region region-emea critical">
+                <span>Germany-West</span>
+                <strong>P1 Payments Outage</strong>
+              </div>
+              <div class="region region-apac risk">
+                <span>Singapore</span>
+                <strong>Predicted risk · 71</strong>
+              </div>
               <div class="map-center-copy">
                 <p>AI summary</p>
-                <h3 id="map-summary"></h3>
-                <span id="map-detail"></span>
+                <h3>Global platform health is stable, but Germany-West is experiencing a customer-facing payments incident.</h3>
+                <span>Blast radius: 18 enterprise customers · SLA risk elevated · Recovery ETA 12 min</span>
               </div>
-            </section>
+            </div>
 
-            <section class="service-panel">
-              <div class="section-heading">
-                <div>
-                  <p class="eyebrow">Service constellation</p>
-                  <h3>Business-aware health tiles</h3>
-                </div>
-                <span class="mini-tag">Region + customer impact</span>
-              </div>
-              <div class="service-constellation" id="service-grid"></div>
-            </section>
+            <div class="service-constellation">
+              <article class="service-card healthy">
+                <h3>Customer Identity</h3>
+                <p>Health 98 · Risk 14</p>
+                <span>0 customers impacted</span>
+              </article>
+              <article class="service-card degraded">
+                <h3>API Gateway</h3>
+                <p>Health 63 · Risk 82</p>
+                <span>Gateway saturation detected</span>
+              </article>
+              <article class="service-card critical">
+                <h3>Payments Core</h3>
+                <p>Health 34 · Risk 91</p>
+                <span>18 customers impacted</span>
+              </article>
+              <article class="service-card risk">
+                <h3>Voice Routing</h3>
+                <p>Health 84 · Risk 68</p>
+                <span>Near-miss pattern in APAC</span>
+              </article>
+            </div>
           </div>
 
-          <section class="story-strip" id="story-strip"></section>
-
-          <section class="drilldown-grid">
-            <article class="glass-subpanel evidence-panel">
-              <div class="section-heading">
-                <div>
-                  <p class="eyebrow">Dependency graph overlay</p>
-                  <h3>Blast radius and causal chain</h3>
-                </div>
-                <span class="mini-tag" id="graph-tag">Topology-aware RCA</span>
-              </div>
-              <div class="dependency-graph" id="dependency-graph"></div>
+          <section class="story-strip">
+            <article>
+              <p>Top headline</p>
+              <h3>180 raw alerts collapsed into 1 correlated P1 incident.</h3>
             </article>
-
-            <article class="glass-subpanel briefing-output">
-              <div class="section-heading">
-                <div>
-                  <p class="eyebrow">Executive headlines</p>
-                  <h3>3-slide briefing</h3>
-                </div>
-                <span class="mini-tag">Export-ready</span>
-              </div>
-              <ol id="briefing-list"></ol>
+            <article>
+              <p>AI diagnosis</p>
+              <h3>Likely root cause: release 2026.03.18.4 increased gateway saturation.</h3>
+            </article>
+            <article>
+              <p>Recommended action</p>
+              <h3>Rollback release and reroute 30% of traffic to Netherlands.</h3>
             </article>
           </section>
         </section>
 
         <aside class="intelligence-rail glass-panel">
-          <div class="rail-tabs" id="rail-tabs">
-            <button class="active" data-tab="ask">Ask</button>
-            <button data-tab="explain">Explain</button>
-            <button data-tab="act">Act</button>
-            <button data-tab="briefing">Briefing</button>
+          <div class="rail-tabs">
+            <button class="active">Ask</button>
+            <button>Explain</button>
+            <button>Act</button>
+            <button>Briefing</button>
           </div>
 
-          <section class="assistant-card" id="tab-ask">
+          <section class="assistant-card">
             <p class="eyebrow">Live AI summary</p>
-            <h3 id="incident-title"></h3>
-            <p id="incident-summary"></p>
-            <ul id="incident-bullets"></ul>
+            <h3>Germany-West Payments Incident</h3>
+            <p>
+              Latency increased 340% in the last 7 minutes due to API gateway saturation after deployment
+              2026.03.18.4, threatening the card authorization SLA.
+            </p>
+            <ul>
+              <li>Probable blast radius: 18 enterprise customers</li>
+              <li>Confidence in RCA: 0.87</li>
+              <li>Best next action: rollback + traffic shift</li>
+            </ul>
           </section>
 
-          <section class="assistant-card hidden" id="tab-explain">
-            <p class="eyebrow">Why the AI believes this</p>
-            <div class="evidence-stack" id="evidence-stack"></div>
+          <section class="assistant-card compact">
+            <p class="eyebrow">What should I tell the customer?</p>
+            <p>
+              We identified elevated payment latency in Germany-West, isolated the likely trigger, and have already
+              initiated recovery actions to protect authorization traffic.
+            </p>
           </section>
 
-          <section class="assistant-card hidden" id="tab-act">
+          <section class="assistant-card actions">
             <div class="action-header">
               <div>
                 <p class="eyebrow">Safe automation bundle</p>
-                <h3 id="action-title">Approve Safe Actions</h3>
+                <h3>Approve Safe Actions</h3>
               </div>
-              <span class="confidence" id="confidence-value">92% confidence</span>
+              <span class="confidence">92% confidence</span>
             </div>
-            <div class="action-list" id="action-list"></div>
-            <button class="primary" id="primary-action"></button>
-            <button class="secondary" id="secondary-action">Open war room</button>
-          </section>
-
-          <section class="assistant-card hidden" id="tab-briefing">
-            <p class="eyebrow">Customer-safe update</p>
-            <p id="customer-message"></p>
-            <div class="briefing-note" id="briefing-note"></div>
+            <button class="primary">Approve rollback + reroute</button>
+            <button class="secondary">Open war room</button>
           </section>
         </aside>
 
@@ -179,7 +188,33 @@
               <span><i class="dot recovery"></i>Recovery</span>
             </div>
           </div>
-          <div class="timeline-track" id="timeline-track"></div>
+          <div class="timeline-track">
+            <article>
+              <span class="time">14:02</span>
+              <h3>Alert burst detected</h3>
+              <p>180 alerts entered the stream across gateway, auth, and card services.</p>
+            </article>
+            <article>
+              <span class="time">14:04</span>
+              <h3>Release 2026.03.18.4 deployed</h3>
+              <p>Configuration change correlated with error-rate slope acceleration.</p>
+            </article>
+            <article>
+              <span class="time">14:06</span>
+              <h3>P1 incident declared</h3>
+              <p>LLMHub summary, RCA hypotheses, and blast radius generated.</p>
+            </article>
+            <article>
+              <span class="time">14:08</span>
+              <h3>Safe actions approved</h3>
+              <p>Rollback initiated and 30% of traffic shifted to Netherlands.</p>
+            </article>
+            <article>
+              <span class="time">14:11</span>
+              <h3>Recovery trending positive</h3>
+              <p>Error rate dropped 67%, risk score fell from 91 to 28.</p>
+            </article>
+          </div>
         </section>
 
         <section class="briefing-panel glass-panel">
@@ -189,7 +224,18 @@
               <h2>Decision-grade operational story</h2>
             </div>
           </div>
-          <div class="before-after" id="before-after"></div>
+          <div class="before-after">
+            <article>
+              <span>Before</span>
+              <h3>Noise and uncertainty</h3>
+              <p>Multiple tools, duplicated alerts, unclear ownership, and no customer-safe narrative.</p>
+            </article>
+            <article>
+              <span>After</span>
+              <h3>One story. One action plane.</h3>
+              <p>NovaOps correlates, explains, recommends, executes guarded automation, and drafts executive updates.</p>
+            </article>
+          </div>
         </section>
       </main>
     </div>
