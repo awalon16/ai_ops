@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NovaOps AI Command Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="command-ribbon glass-panel">
+        <div>
+          <p class="eyebrow">NovaOps AI Command Center</p>
+          <h1>Single Pane of Glass</h1>
+          <p class="subtitle">
+            Executive-ready operations mission control for observability, incidents, predictive risk, and guarded
+            automation.
+          </p>
+        </div>
+
+        <div class="ribbon-controls">
+          <label>
+            Tenant
+            <select id="tenant-select"></select>
+          </label>
+          <label>
+            Demo scene
+            <select id="scene-select"></select>
+          </label>
+          <label class="query-bar">
+            Ask NovaOps
+            <input id="query-input" value="What is failing in Germany and what should I tell the customer?" />
+          </label>
+        </div>
+
+        <div class="ribbon-metrics">
+          <article>
+            <span>Global Health</span>
+            <strong id="global-health">94</strong>
+            <small id="health-trend">+2 vs 1h</small>
+          </article>
+          <article>
+            <span>Active Incidents</span>
+            <strong id="incident-count">03</strong>
+            <small id="incident-detail">1 critical</small>
+          </article>
+          <article>
+            <span>Automation Mode</span>
+            <strong id="automation-mode">Semi-Auto</strong>
+            <small id="guardrail-status">Guardrails active</small>
+          </article>
+        </div>
+      </header>
+
+      <main class="dashboard-grid">
+        <section class="hero-canvas glass-panel">
+          <div class="hero-header">
+            <div>
+              <p class="eyebrow">Executive Briefing Mode</p>
+              <h2 id="hero-title">Global Operational Posture</h2>
+            </div>
+            <div class="hero-actions">
+              <button id="play-tour-button">Play demo story</button>
+              <button id="briefing-button">Generate Meeting Brief</button>
+            </div>
+          </div>
+
+          <div class="status-bar">
+            <span class="status-pill" id="scene-pill">Scene 1 · Calm before the storm</span>
+            <span class="status-pill alt" id="business-pill">No current customer-facing P1 impact</span>
+          </div>
+
+          <div class="map-layout">
+            <section class="globe-card">
+              <div class="map-glow"></div>
+              <div class="region-grid" id="region-grid"></div>
+              <div class="map-center-copy">
+                <p>AI summary</p>
+                <h3 id="map-summary"></h3>
+                <span id="map-detail"></span>
+              </div>
+            </section>
+
+            <section class="service-panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Service constellation</p>
+                  <h3>Business-aware health tiles</h3>
+                </div>
+                <span class="mini-tag">Region + customer impact</span>
+              </div>
+              <div class="service-constellation" id="service-grid"></div>
+            </section>
+          </div>
+
+          <section class="story-strip" id="story-strip"></section>
+
+          <section class="drilldown-grid">
+            <article class="glass-subpanel evidence-panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Dependency graph overlay</p>
+                  <h3>Blast radius and causal chain</h3>
+                </div>
+                <span class="mini-tag" id="graph-tag">Topology-aware RCA</span>
+              </div>
+              <div class="dependency-graph" id="dependency-graph"></div>
+            </article>
+
+            <article class="glass-subpanel briefing-output">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Executive headlines</p>
+                  <h3>3-slide briefing</h3>
+                </div>
+                <span class="mini-tag">Export-ready</span>
+              </div>
+              <ol id="briefing-list"></ol>
+            </article>
+          </section>
+        </section>
+
+        <aside class="intelligence-rail glass-panel">
+          <div class="rail-tabs" id="rail-tabs">
+            <button class="active" data-tab="ask">Ask</button>
+            <button data-tab="explain">Explain</button>
+            <button data-tab="act">Act</button>
+            <button data-tab="briefing">Briefing</button>
+          </div>
+
+          <section class="assistant-card" id="tab-ask">
+            <p class="eyebrow">Live AI summary</p>
+            <h3 id="incident-title"></h3>
+            <p id="incident-summary"></p>
+            <ul id="incident-bullets"></ul>
+          </section>
+
+          <section class="assistant-card hidden" id="tab-explain">
+            <p class="eyebrow">Why the AI believes this</p>
+            <div class="evidence-stack" id="evidence-stack"></div>
+          </section>
+
+          <section class="assistant-card hidden" id="tab-act">
+            <div class="action-header">
+              <div>
+                <p class="eyebrow">Safe automation bundle</p>
+                <h3 id="action-title">Approve Safe Actions</h3>
+              </div>
+              <span class="confidence" id="confidence-value">92% confidence</span>
+            </div>
+            <div class="action-list" id="action-list"></div>
+            <button class="primary" id="primary-action"></button>
+            <button class="secondary" id="secondary-action">Open war room</button>
+          </section>
+
+          <section class="assistant-card hidden" id="tab-briefing">
+            <p class="eyebrow">Customer-safe update</p>
+            <p id="customer-message"></p>
+            <div class="briefing-note" id="briefing-note"></div>
+          </section>
+        </aside>
+
+        <section class="timeline-panel glass-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Operational timeline</p>
+              <h2>Incident lifecycle + automation trail</h2>
+            </div>
+            <div class="legend">
+              <span><i class="dot alert"></i>Alert burst</span>
+              <span><i class="dot deploy"></i>Deployment</span>
+              <span><i class="dot action"></i>AI action</span>
+              <span><i class="dot recovery"></i>Recovery</span>
+            </div>
+          </div>
+          <div class="timeline-track" id="timeline-track"></div>
+        </section>
+
+        <section class="briefing-panel glass-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Before vs after remediation</p>
+              <h2>Decision-grade operational story</h2>
+            </div>
+          </div>
+          <div class="before-after" id="before-after"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
